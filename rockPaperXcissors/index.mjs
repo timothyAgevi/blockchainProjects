@@ -7,7 +7,7 @@ const accAlice = await stdlib.newTestAccount(startingBalance);
 const accBob = await stdlib.newTestAccount(startingBalance);
 
 const fmt = (x) => stdlib.formatCurrency(x, 4);
-const getBalance = async (who) => fmt(await stdlib.balanceOf(who));
+const getBalance = async (who) => fmt(await stdlib.balanceOf(who));//getBalance function
 const beforeAlice = await getBalance(accAlice);
 const beforeBob = await getBalance(accBob);
 //contracts
