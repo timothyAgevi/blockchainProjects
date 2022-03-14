@@ -9,7 +9,7 @@ const startingBalance=stdlib.parseCurrency(10);
 const accAlice=await stdlib.newTestAccount(startingBalance)
 const accBob=await stdlib.newTestAccount(startingBalance)
 //contracts
-const ctcAlice =accAlice.deploy(backend)
+const ctcAlice =accAlice.contract(backend)
 const ctcBob =accAlice.contract(backend,ctcAlice.getInfo())
 
 //player interface 0 ,1,2
