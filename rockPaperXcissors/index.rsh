@@ -29,7 +29,7 @@ export const main = Reach.App(() => {
     interact.acceptWager(wager);//interact with acceptWager
     const handBob = declassify(interact.getHand());
   });
-  Bob.publish(handBob)
+  Bob.publish(handBob)//bob publish his hand
     .pay(wager);
 
   const outcome = (handAlice + (4 - handBob)) % 3;
@@ -40,7 +40,7 @@ export const main = Reach.App(() => {
   transfer(forAlice * wager).to(Alice);
   transfer(forBob   * wager).to(Bob);
   commit();
-
+//share outcome to frontend
   each([Alice, Bob], () => {
     interact.seeOutcome(outcome);
   });
