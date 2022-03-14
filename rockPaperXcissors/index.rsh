@@ -14,7 +14,7 @@ export const main = Reach.App(() => {
     ...Player,
     acceptWager: Fun([UInt], Null),
   });
-  init();
+  init();//initialize contract after defining paricipants
 
   Alice.only(() => {
     const wager = declassify(interact.wager);
