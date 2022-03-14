@@ -29,18 +29,19 @@ const Player = (Who) => ({
 });
 
 await Promise.all([
-  ctcAlice.p.Alice({
+  ctcAlice.p.Alice({ //instead of backend.Alice
     ...Player('Alice'),
     wager: stdlib.parseCurrency(5),
   }),
-  ctcBob.p.Bob({
+  ctcBob.p.Bob({//instead of backend.Bob
     ...Player('Bob'),
     acceptWager: (amt) => {
       console.log(`Bob accepts the wager of ${fmt(amt)}.`);
     },
+
   }),
 ]);
-
+//balance after transaction
 const afterAlice = await getBalance(accAlice);
 const afterBob = await getBalance(accBob);
 
