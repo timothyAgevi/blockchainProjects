@@ -13,16 +13,17 @@ const ctcAlice =accAlice.deploy(backend)
 const ctcBob =accAlice.contract(backend,ctcAlice.getInfo())
 
 //player interface 0 ,1,2
-const Hand =['Rock','Paper','Scissors']
+const HAND =['Rock','Paper','Scissors']
 const OUTCOME =['Bob wins','Draw','Alice wins']
 //logic to play game ,use constructor to hve player object for both
 const Player=(who)=>({
     getHand:()=>{
       const hand =Math.floor(Math.random()*3)
-      console.log(hand)
+      console.log(`${who} played${HAND[hand]}`)//HAND to hand
+      return hand
     },
     seeOutcome:(outcome)=>{
-
+       console.log(`${who} saw outcome ${OUTCOME[outcome]}`)
     }
 
 })
