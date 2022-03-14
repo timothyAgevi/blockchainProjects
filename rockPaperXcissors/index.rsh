@@ -25,6 +25,13 @@ Alice.only(()=>{
 });
 Alice.publish(handAlice);
 commit();
+
+Bob.only( ()=>{
+    const handBob=declassify(interact.gethand());
+    });
+    Bob.publish(handBob);
+    const outcome =(handAlice + (4-handBob)%3);
+    commit();
 });
 
 
