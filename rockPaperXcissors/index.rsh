@@ -1,44 +1,46 @@
 'reach 0.1';
 
-//interact interface 
-const Player={
-    gethand:Fun([],UInt),//no input ,return number representing hand
-    seeOutcome:Fun([UInt],Null)//input is outcome as number,output is Null
-}
+const Player = {
+  getHand: Fun([], UInt),
+  seeOutcome: Fun([UInt], Null),
+};
 
+export const main = Reach.App(() => {
+  const Alice = Participant('Alice', {
+    ...Player,
+    wager: UInt,
+  });
+  const Bob   = Participant('Bob', {
+    ...Player,
+    acceptWager: Fun([UInt], Null),
+  });
+  init();
 
-export const main=Reach.App( ()=>{
-//interface
- const Alice = Participant('Alice',{
-//Alice interface 
-...Player
-})
+  Alice.only(() => {
+    const wager = declassify(interact.wager);
+    const handAlice = declassify(interact.getHand());
+  });
+  Alice.publish(wager, handAlice)
+    .pay(wager);
+  commit();
 
-const Bob =Participant("Bob",{
-    //Bobs interface
-    ...Player
-})
-deploy();
-//write logic:backend interact with frontend,get hand,publish to network 
-Alice.only(()=>{
-    const handAlice =declassify(interact.gethand());
+  Bob.only(() => {
+    interact.acceptWager(wager);
+    const handBob = declassify(interact.getHand());
+  });
+  Bob.publish(handBob)
+    .pay(wager);
+
+  const outcome = (handAlice + (4 - handBob)) % 3;
+  const            [forAlice, forBob] =
+    outcome == 2 ? [       2,      0] :
+    outcome == 0 ? [       0,      2] :
+    /* tie      */ [       1,      1];
+  transfer(forAlice * wager).to(Alice);
+  transfer(forBob   * wager).to(Bob);
+  commit();
+
+  each([Alice, Bob], () => {
+    interact.seeOutcome(outcome);
+  });
 });
-Alice.publish(handAlice);
-commit();
-
-Bob.only( ()=>{
-    const handBob=declassify(interact.gethand());
-    });
-    Bob.publish(handBob);
-    const outcome =(handAlice + (4-handBob))%3;//this remainder as index of OUTCOME array
-    commit();
-    //send outcomes of both to frontend
-    each([Alice,Bob],()=>{
-        interact.seeOutcome(outcome);
-      
-    })
-});
-
-
-
-

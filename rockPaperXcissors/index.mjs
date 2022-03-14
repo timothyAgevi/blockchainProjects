@@ -29,13 +29,12 @@ const Player=(who)=>({
 })
 
 await Promise.all([
-    backend.Alice(ctcAlice,{
-//Alince interface
+    backend.Alice(ctcAlice ,{
     ...Player('Alice')
     }),
     backend.Bob(ctcBob,{
         //implements Bob interact object
-        ...Player('Alice')
+        ...Player('Alice'),
     })
 ])
 
