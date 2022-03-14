@@ -10,12 +10,15 @@ const accAlice=await stdlib.newTestAccount(startingBalance)
 const accBob=await stdlib.newTestAccount(startingBalance)
 //contracts
 const ctcAlice =accAlice.deploy(backend)
-const ctcBob =accAlice.attach(backend,ctcAlice.getInfo())
+const ctcBob =accAlice.contract(backend,ctcAlice.getInfo())
 
 await Promise.all([
     backend.Alice(ctcAlice,{
-//Alinceinterface
+//Alince interface
     }),
+    backend.Bob(ctcBob,{
+        //implements Bob interact object
+    })
 ])
 
 }) ();
