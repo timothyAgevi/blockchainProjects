@@ -12,9 +12,13 @@ const accBob=await stdlib.newTestAccount(startingBalance)
 const ctcAlice =accAlice.deploy(backend)
 const ctcBob =accAlice.contract(backend,ctcAlice.getInfo())
 
-//player interface
+//player interface 0 ,1,2
 const Hand =['Rock','Paper','Scissors']
 const OUTCOME =['Bob wins','Draw','Alice wins']
+//logic to play game 
+const Player=(who)=>({
+    
+})
 
 await Promise.all([
     backend.Alice(ctcAlice,{
