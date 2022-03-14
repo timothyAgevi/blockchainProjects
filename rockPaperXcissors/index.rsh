@@ -19,8 +19,12 @@ const Bob =Participant("Bob",{
     ...Player
 })
 deploy();
-//write logic   
-
+//write logic:backend interact with frontend,get hand,publish to network 
+Alice.only(()=>{
+    const handAlice =declassify(interact.gethand());
+});
+Alice.publish(handAlice);
+commit();
 });
 
 
