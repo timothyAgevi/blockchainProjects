@@ -15,9 +15,15 @@ const ctcBob =accAlice.contract(backend,ctcAlice.getInfo())
 //player interface 0 ,1,2
 const Hand =['Rock','Paper','Scissors']
 const OUTCOME =['Bob wins','Draw','Alice wins']
-//logic to play game 
+//logic to play game ,use constructor to hve player object for both
 const Player=(who)=>({
-    
+    getHand:()=>{
+
+    },
+    seeOutcome:(outcome)=>{
+        
+    }
+
 })
 
 await Promise.all([
