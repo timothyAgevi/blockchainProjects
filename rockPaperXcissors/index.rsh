@@ -1,5 +1,5 @@
 'reach 0.1';
-
+//Player interface
 const Player = {
   getHand: Fun([], UInt),
   seeOutcome: Fun([UInt], Null),

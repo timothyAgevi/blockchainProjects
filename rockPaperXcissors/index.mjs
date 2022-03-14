@@ -10,12 +10,13 @@ const fmt = (x) => stdlib.formatCurrency(x, 4);
 const getBalance = async (who) => fmt(await stdlib.balanceOf(who));
 const beforeAlice = await getBalance(accAlice);
 const beforeBob = await getBalance(accBob);
-
+//contracts
 const ctcAlice = accAlice.contract(backend);
 const ctcBob = accBob.contract(backend, ctcAlice.getInfo());
-
+//interact for Player Interface
 const HAND = ['Rock', 'Paper', 'Scissors'];
 const OUTCOME = ['Bob wins', 'Draw', 'Alice wins'];
+//constructor for Playeer interface
 const Player = (Who) => ({
   getHand: () => {
     const hand = Math.floor(Math.random() * 3);
