@@ -31,8 +31,9 @@ export const main = Reach.App(() => {
   });
   Bob.publish(handBob)//bob publish his hand
     .pay(wager);
-
+//calculate outcome
   const outcome = (handAlice + (4 - handBob)) % 3;
+
   const            [forAlice, forBob] =
     outcome == 2 ? [       2,      0] :
     outcome == 0 ? [       0,      2] :
