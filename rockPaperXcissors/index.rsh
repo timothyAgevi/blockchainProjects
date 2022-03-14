@@ -20,6 +20,7 @@ export const main = Reach.App(() => {
     const wager = declassify(interact.wager);
     const handAlice = declassify(interact.getHand());
   });
+  //Alice publish wager and hand
   Alice.publish(wager, handAlice)
     .pay(wager);
   commit();
