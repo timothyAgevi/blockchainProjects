@@ -32,6 +32,11 @@ Bob.only( ()=>{
     Bob.publish(handBob);
     const outcome =(handAlice + (4-handBob))%3;//this remainder as index of OUTCOME array
     commit();
+    //send outcomes of both to frontend
+    each([Alice,Bob],()=>{
+        interact.seeOutcome(outcome);
+      
+    })
 });
 
 
