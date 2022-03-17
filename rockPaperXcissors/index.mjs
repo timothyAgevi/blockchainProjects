@@ -5,7 +5,7 @@ const stdlib = loadStdlib(process.env);
 const startingBalance = stdlib.parseCurrency(100);
 const accAlice = await stdlib.newTestAccount(startingBalance);
 const accBob = await stdlib.newTestAccount(startingBalance);
-
+//acc balances
 const fmt = (x) => stdlib.formatCurrency(x, 4);//convert currency to user understandable form
 const getBalance = async (who) => fmt(await stdlib.balanceOf(who));//getBalance function
 const beforeAlice = await getBalance(accAlice);
