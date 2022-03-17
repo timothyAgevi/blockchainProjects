@@ -1,10 +1,10 @@
 import { loadStdlib, ask } from '@reach-sh/stdlib';
 import * as backend from './build/index.main.mjs';
 const stdlib = loadStdlib();
-
+//ask.ask presents a prompt and collects a line of input until its argument does not error.
 const isAlice = await ask.ask(
   `Are you Alice?`,
-  ask.yesno
+  ask.yesno//errors if it is not given "y" or "n"
 );
 const who = isAlice ? 'Alice' : 'Bob';
 
@@ -16,6 +16,7 @@ const createAcc = await ask.ask(
   ask.yesno
 );
 if (createAcc) {
+  // creates the test account as before
   acc = await stdlib.newTestAccount(stdlib.parseCurrency(1000));
 } else {
   const secret = await ask.ask(
