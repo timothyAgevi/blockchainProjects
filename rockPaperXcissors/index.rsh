@@ -50,13 +50,13 @@ export const main = Reach.App(() => {
 //alice declasify hand and wager
   Alice.only(() => {
     const wager = declassify(interact.wager);
-    const _handAlice = interact.getHand();//compute handAlice without declassifing it
-    const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
-    const commitAlice = declassify(_commitAlice);//declassify Alice commitment
+    // const _handAlice = interact.getHand();//compute handAlice without declassifing it
+    // const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
+    // const commitAlice = declassify(_commitAlice);//declassify Alice commitment
     const deadline = declassify(interact.deadline);//Alice declassify and publish the deadline for later timeout clauses
   });
   //Alice publish wager,hand,deadline
-  Alice.publish(wager, commitAlice,deadline)
+  Alice.publish(wager, deadline)
     .pay(wager);//pay inbuilt function to request wager
   commit();
 // salt in the commitment, so that multiple commitments to the same value are not identical.
