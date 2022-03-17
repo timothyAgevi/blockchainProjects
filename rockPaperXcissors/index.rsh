@@ -8,7 +8,7 @@ const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
  //assertions
  assert(winner(ROCK,PAPER)==B_WINS);
- assert(winner(PAPER,ROCK) ==A_WINS)
+ assert(winner(PAPER,ROCK) ==A_WINS);
  assert(winner(ROCK,ROCK)==DRAW);
 
  //loop assertions for each value entered fpr hand return valid outcome
@@ -40,6 +40,7 @@ export const main = Reach.App(() => {
     ...Player,
     acceptWager: Fun([UInt], Null),
   });
+  init();
    //informTimeout helper function 
    const informTimeout=()=>{ //defines the function as an arrow expression
     each([Alice,Bob] , ()=>{ //each of the participants perform a local step
@@ -80,10 +81,7 @@ export const main = Reach.App(() => {
     const _handAlice = interact.getHand();//compute handAlice without declassifing it
     const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
     const commitAlice = declassify(_commitAlice);//declassify Alice commitment
-        //to be used later
-    //     //Alice declassify secret information
-    // const saltAlice = declassify(_saltAlice);
-    // const handAlice = declassify(_handAlice);
+    
   });
   Alice.publish(commitAlice)
   .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
@@ -95,15 +93,22 @@ export const main = Reach.App(() => {
     Bob.publish(handBob)
       .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
     commit();
-//calculate outcome
-  const outcome = winner(handAlice, handBob)
+
+    Alice.only(() => {
+      const saltAlice = declassify(_saltAlice);
+      const handAlice = declassify(_handAlice);
+    });
+    Alice.publish(saltAlice, handAlice)
+      .timeout(relativeTime(deadline), () => closeTo(Bob, informTimeout));
+    checkCommitment(commitAlice, saltAlice, handAlice);
+
+    outcome = winner(handAlice, handBob);
+    continue;
+  }
   //determine transfer of funds
-  const            [forAlice, forBob] =//use new names for outcome as declared in assertions line71,72
-    outcome == A_WINS ? [       2,      0] :
-    outcome == B_WINS ? [       0,      2] :
-    /* tie      */ [       1,      1];
-  transfer(forAlice * wager).to(Alice);
-  transfer(forBob   * wager).to(Bob);
+  
+  assert(outcome == A_WINS || outcome == B_WINS);
+  transfer(2 * wager).to(outcome == A_WINS ? Alice : Bob);
   commit();
 //share outcome to frontend
   each([Alice, Bob], () => {
