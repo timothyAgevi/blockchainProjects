@@ -58,6 +58,7 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));
 commit();
     //Alice can now reveal her secret
       Alice.only(() => {
+        //Alice declassify secret information
     const saltAlice = declassify(_saltAlice);
     const handAlice = declassify(_handAlice);
   });
