@@ -50,9 +50,7 @@ export const main = Reach.App(() => {
 //alice declasify hand and wager
   Alice.only(() => {
     const wager = declassify(interact.wager);
-    // const _handAlice = interact.getHand();//compute handAlice without declassifing it
-    // const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
-    // const commitAlice = declassify(_commitAlice);//declassify Alice commitment
+    
     const deadline = declassify(interact.deadline);//Alice declassify and publish the deadline for later timeout clauses
   });
   //Alice publish wager,deadline
@@ -78,15 +76,18 @@ export const main = Reach.App(() => {
 
 
     //Alice can now reveal her secret
-      Alice.only(() => {
-        //Alice declassify secret information
-    const saltAlice = declassify(_saltAlice);
-    const handAlice = declassify(_handAlice);
+  Alice.only(() => {//alice mk commitment
+    const _handAlice = interact.getHand();//compute handAlice without declassifing it
+    const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
+    const commitAlice = declassify(_commitAlice);//declassify Alice commitment
+        //to be used later
+    //     //Alice declassify secret information
+    // const saltAlice = declassify(_saltAlice);
+    // const handAlice = declassify(_handAlice);
   });
   Alice.publish(saltAlice, handAlice)
   .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
-  checkCommitment(commitAlice, saltAlice, handAlice);// checks that the published values match the original values
-  
+   
 //calculate outcome
   const outcome = winner(handAlice, handBob)
   //determine transfer of funds
