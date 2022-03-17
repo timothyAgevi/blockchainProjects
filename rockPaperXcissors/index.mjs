@@ -29,6 +29,7 @@ if (createAcc) {
 }
 
 let ctc = null;
+//branch based on which player is running
 if (isAlice) {
   ctc = acc.contract(backend);
   ctc.getInfo().then((info) => {
