@@ -55,7 +55,7 @@ export const main = Reach.App(() => {
     // const commitAlice = declassify(_commitAlice);//declassify Alice commitment
     const deadline = declassify(interact.deadline);//Alice declassify and publish the deadline for later timeout clauses
   });
-  //Alice publish wager,hand,deadline
+  //Alice publish wager,deadline
   Alice.publish(wager, deadline)
     .pay(wager);//pay inbuilt function to request wager
   commit();
