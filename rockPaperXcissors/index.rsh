@@ -4,9 +4,9 @@ const Player = {
   getHand: Fun([], UInt),
   seeOutcome: Fun([UInt], Null),
 };
-//enumerations for the hands that may be played, as well as the outcomes of the game
-const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);
-const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
+//enumerations used in winner function
+const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);//enumerations for the hands that may be played
+const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3); //enumerations the outcomes of the game
 //winner function 
 const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
