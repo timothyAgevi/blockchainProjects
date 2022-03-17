@@ -6,7 +6,10 @@ const Player = {
 };
 //variables used byu winner function
 const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);
-const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3)
+const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
+//winner function function
+const winner = (handAlice, handBob) =>
+  ((handAlice + (4 - handBob)) % 3);
 
 export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
