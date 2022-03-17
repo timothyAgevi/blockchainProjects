@@ -34,6 +34,7 @@ export const main = Reach.App(() => {
 //calculate outcome
   const outcome = (handAlice + (4 - handBob)) % 3;
 
+  //determine transfer of funds
   const            [forAlice, forBob] =
     outcome == 2 ? [       2,      0] :
     outcome == 0 ? [       0,      2] :
