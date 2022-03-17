@@ -37,7 +37,7 @@ await Promise.all([
   ctcAlice.p.Alice({ //instead of backend.Alice
     ...Player('Alice'),
     wager: stdlib.parseCurrency(5),
-
+    deadline:10//Alice specify a deadline of ten blocks.
   }),
   ctcBob.p.Bob({//instead of backend.Bob
     ...Player('Bob'),
