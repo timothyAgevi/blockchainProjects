@@ -10,6 +10,9 @@ const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
 //winner function function
 const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
+ //assertions
+ assert(winner(ROCK,PAPER)==B_WINS);
+  
 
 export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
