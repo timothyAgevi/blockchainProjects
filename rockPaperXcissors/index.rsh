@@ -31,6 +31,7 @@ export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
     ...Player,
     wager: UInt,
+    deadline: UInt, // time delta (blocks/rounds):value to use as a standard deadline throughout the program
   });
   const Bob   = Participant('Bob', {
     ...Player,
