@@ -47,7 +47,8 @@ export const main = Reach.App(() => {
   Alice.publish(wager, commitAlice)
     .pay(wager);//pay inbuilt function to request wager
   commit();
-
+// salt in the commitment, so that multiple commitments to the same value are not identical.
+unknowable(Bob, Alice(_handAlice, _saltAlice));
   Bob.only(() => { 
     interact.acceptWager(wager);//interact with acceptWager
     const handBob = declassify(interact.getHand());
