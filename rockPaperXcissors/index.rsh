@@ -16,6 +16,7 @@ const winner = (handAlice, handBob) =>
  assert(winner(ROCK,ROCK)==DRAW);
 
  //loop assertions for each value entered fpr hand return valid outcome
+ //variation of hands
  forall(UInt, handAlice =>
   forall(UInt, handBob =>
     assert(isOutcome(winner(handAlice, handBob)))));
