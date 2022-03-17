@@ -56,9 +56,7 @@ await Promise.all([
     //Lines 42 through 51 redefine Bob's acceptWager method as an asynchronous function, where half of the time it will take at least ten blocks on the Ethereum network by waiting for ten units of time to pass. We know that ten is the value of deadline, so this will cause a timeout
     acceptWager: (amt) => {
       console.log(`Bob accepts the wager of ${fmt(amt)}.`);
-    },
-  
-
+    }, 
   }),
 ]);
 //balance after transaction
