@@ -63,7 +63,7 @@ export const main = Reach.App(() => {
 // unknowable(Bob, Alice(_handAlice, _saltAlice));//states the knowledge assertion.
   Bob.only(() => { 
     interact.acceptWager(wager);//interact with acceptWager
-    const handBob = declassify(interact.getHand());
+    
   });
   Bob.publish(handBob)//bob publish his hand
     .pay(wager)
