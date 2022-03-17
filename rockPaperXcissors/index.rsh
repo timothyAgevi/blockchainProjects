@@ -1,6 +1,7 @@
 'reach 0.1';
 //Player interface
 const Player = {
+  ...hasRandom,//each frontend can provide acess to random numbers
   getHand: Fun([], UInt),
   seeOutcome: Fun([UInt], Null),
 };
