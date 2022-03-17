@@ -85,9 +85,16 @@ export const main = Reach.App(() => {
     // const saltAlice = declassify(_saltAlice);
     // const handAlice = declassify(_handAlice);
   });
-  Alice.publish(saltAlice, handAlice)
+  Alice.publish(commitAlice)
   .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
-   
+   //knowledge assertation
+  unknowable(Bob, Alice(_handAlice, _saltAlice));
+    Bob.only(() => {
+      const handBob = declassify(interact.getHand());
+    });
+    Bob.publish(handBob)
+      .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
+    commit();
 //calculate outcome
   const outcome = winner(handAlice, handBob)
   //determine transfer of funds
