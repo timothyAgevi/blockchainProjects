@@ -40,18 +40,17 @@ export const main = Reach.App(() => {
     ...Player,
     acceptWager: Fun([UInt], Null),
   });
-  init();
+  init();//initialize contract after defining paricipants
    //informTimeout helper function 
    const informTimeout=()=>{ //defines the function as an arrow expression
     each([Alice,Bob] , ()=>{ //each of the participants perform a local step
       interact.informTimeout();//participants call informTimeout function
     });
   };
-  init();//initialize contract after defining paricipants
+  
 //alice declasify hand and wager
   Alice.only(() => {
     const wager = declassify(interact.wager);
-    
     const deadline = declassify(interact.deadline);//Alice declassify and publish the deadline for later timeout clauses
   });
   //Alice publish wager,deadline
@@ -73,9 +72,6 @@ export const main = Reach.App(() => {
         invariant( balance() == 2 * wager && isOutcome(outcome) );
         while ( outcome == DRAW ) {
           commit();    
-
-
-
     //Alice can now reveal her secret
   Alice.only(() => {//alice mk commitment
     const _handAlice = interact.getHand();//compute handAlice without declassifing it
@@ -84,9 +80,10 @@ export const main = Reach.App(() => {
     
   });
   Alice.publish(commitAlice)
-  .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
+  .timeout(relativeTime(deadline), () => closeTo(Bob, informTimeout));
+  commit()
    //knowledge assertation
-  unknowable(Bob, Alice(_handAlice, _saltAlice));
+  unknowable(Bob,Alice(_handAlice, _saltAlice));
     Bob.only(() => {
       const handBob = declassify(interact.getHand());
     });
