@@ -34,8 +34,8 @@ export const main = Reach.App(() => {
     deadline: UInt, // time delta (blocks/rounds):value to use as a standard deadline throughout the program
   });
   //informTimeout helper function 
-  const informTimeout=()=>{
-    each([aLICE,Bob],()=>{
+  const informTimeout=()=>{ 
+    each([Alice,Bob],()=>{
       interact.informTimeout();
     });
   };
