@@ -75,8 +75,10 @@ commit();
     const saltAlice = declassify(_saltAlice);
     const handAlice = declassify(_handAlice);
   });
-  Alice.publish(saltAlice, handAlice);
+  Alice.publish(saltAlice, handAlice)
+  .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
   checkCommitment(commitAlice, saltAlice, handAlice);// checks that the published values match the original values
+  
 //calculate outcome
   const outcome = winner(handAlice, handBob)
   //determine transfer of funds
