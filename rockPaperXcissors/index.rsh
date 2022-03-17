@@ -33,6 +33,12 @@ export const main = Reach.App(() => {
     wager: UInt,//atomic units of currency
     deadline: UInt, // time delta (blocks/rounds):value to use as a standard deadline throughout the program
   });
+  //informTimeout helper function 
+  const informTimeout=()=>{
+    each([aLICE,Bob],()=>{
+      interact.informTimeout();
+    });
+  };
   const Bob   = Participant('Bob', {
     ...Player,
     acceptWager: Fun([UInt], Null),
