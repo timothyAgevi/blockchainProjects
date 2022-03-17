@@ -55,9 +55,14 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));
   });
   Bob.publish(handBob)//bob publish his hand
     .pay(wager);
-
+commit();
     //Alice can now reveal her secret
-    
+      Alice.only(() => {
+    const saltAlice = declassify(_saltAlice);
+    const handAlice = declassify(_handAlice);
+  });
+  Alice.publish(saltAlice, handAlice);
+  checkCommitment(commitAlice, saltAlice, handAlice);
 //calculate outcome
   const outcome = winner(_handAlice, handBob)
   //determine transfer of funds
