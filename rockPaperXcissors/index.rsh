@@ -33,16 +33,17 @@ export const main = Reach.App(() => {
     wager: UInt,//atomic units of currency
     deadline: UInt, // time delta (blocks/rounds):value to use as a standard deadline throughout the program
   });
-  //informTimeout helper function 
-  const informTimeout=()=>{ //defines the function as an arrow expression
-    each([Alice,Bob],()=>{ //each of the participants perform a local step
-      interact.informTimeout();//participants call informTimeout function
-    });
-  };
+ 
   const Bob   = Participant('Bob', {
     ...Player,
     acceptWager: Fun([UInt], Null),
   });
+   //informTimeout helper function 
+   const informTimeout=()=>{ //defines the function as an arrow expression
+    each([Alice,Bob] , ()=>{ //each of the participants perform a local step
+      interact.informTimeout();//participants call informTimeout function
+    });
+  };
   init();//initialize contract after defining paricipants
 //alice declasify hand and wager
   Alice.only(() => {
@@ -52,8 +53,8 @@ export const main = Reach.App(() => {
     const commitAlice = declassify(_commitAlice);//declassify Alice commitment
     const deadline = declassify(interact.deadline);//lice declassify and publish the deadline for later timeout clauses
   });
-  //Alice publish wager and hand
-  Alice.publish(wager, commitAlice)
+  //Alice publish wager,hand,deadline
+  Alice.publish(wager, commitAlice,deadline)
     .pay(wager);//pay inbuilt function to request wager
   commit();
 // salt in the commitment, so that multiple commitments to the same value are not identical.
@@ -63,7 +64,9 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));
     const handBob = declassify(interact.getHand());
   });
   Bob.publish(handBob)//bob publish his hand
-    .pay(wager);
+    .pay(wager)
+    .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
+
 commit();
     //Alice can now reveal her secret
       Alice.only(() => {
