@@ -55,6 +55,9 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));
   });
   Bob.publish(handBob)//bob publish his hand
     .pay(wager);
+
+    //Alice can now reveal her secret
+    
 //calculate outcome
   const outcome = winner(_handAlice, handBob)
   //determine transfer of funds
