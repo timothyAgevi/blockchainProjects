@@ -12,7 +12,7 @@ const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
  //assertions
  assert(winner(ROCK,PAPER)==B_WINS);
-  
+ assert(winner(PAPER,ROCK,)==A_WINS);
 
 export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
