@@ -65,11 +65,18 @@ export const main = Reach.App(() => {
     interact.acceptWager(wager);//interact with acceptWager
     
   });
-  Bob.pay(wager)//bob publish his hand
-    .pay(wager)
-    //timeout handler
+  Bob.pay(wager)//bob pay wager
+        //timeout handler
     .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));//if bob does Not complete action within timedelta ddeadline,app transitions to step gvn by arrow function
         //i.e closeTo:reach std lib function that allows anyone to send a message and transfer all of the funds in the contract to Alice
+   //additional outcome fun
+        var outcome = DRAW;
+        invariant( balance() == 2 * wager && isOutcome(outcome) );
+        while ( outcome == DRAW ) {
+          commit();    
+
+
+
 commit();
     //Alice can now reveal her secret
       Alice.only(() => {
