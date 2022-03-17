@@ -4,16 +4,21 @@ const Player = {
   getHand: Fun([], UInt),
   seeOutcome: Fun([UInt], Null),
 };
-//variables used byu winner function
+//enumerations for the hands that may be played, as well as the outcomes of the game
 const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);
 const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
-//winner function function
+//winner function 
 const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
  //assertions
  assert(winner(ROCK,PAPER)==B_WINS);
  assert(winner(PAPER,ROCK,)==A_WINS);
  assert(winner(ROCK,ROCK,)==DRAW);
+
+ //loop assertions for each value entered fpr hand return valid outcome
+ forall(UInt, handAlice =>
+  forall(UInt, handBob =>
+    assert(isOutcome(winner(handAlice, handBob)))));
  
 
 export const main = Reach.App(() => {
