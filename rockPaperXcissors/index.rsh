@@ -39,7 +39,7 @@ export const main = Reach.App(() => {
 //alice declasify hand and wager
   Alice.only(() => {
     const wager = declassify(interact.wager);
-    const handAlice = interact.getHand();
+    const handAlice = interact.getHand();//unused declaration
   });
   //Alice publish wager and hand
   Alice.publish(wager, handAlice)
