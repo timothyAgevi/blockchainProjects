@@ -19,7 +19,9 @@ const winner = (handAlice, handBob) =>
  forall(UInt, handAlice =>
   forall(UInt, handBob =>
     assert(isOutcome(winner(handAlice, handBob)))));
- 
+ //loop through assertions for draw
+ forall(UInt, (hand) =>
+  assert(winner(hand, hand) == DRAW));
 
 export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
