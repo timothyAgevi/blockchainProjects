@@ -67,9 +67,9 @@ commit();
 //calculate outcome
   const outcome = winner(handAlice, handBob)
   //determine transfer of funds
-  const            [forAlice, forBob] =
-    outcome == 2 ? [       2,      0] :
-    outcome == 0 ? [       0,      2] :
+  const            [forAlice, forBob] =//use new names for outcome as declared in assertions line71,72
+    outcome == A_WINS ? [       2,      0] :
+    outcome == B_WINS ? [       0,      2] :
     /* tie      */ [       1,      1];
   transfer(forAlice * wager).to(Alice);
   transfer(forBob   * wager).to(Bob);
