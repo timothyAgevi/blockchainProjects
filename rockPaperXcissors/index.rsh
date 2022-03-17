@@ -1,11 +1,5 @@
 'reach 0.1';
-//Player interface
-const Player = {
-  ...hasRandom,// awaits frontend to provide acess to random numbers
-  getHand: Fun([], UInt),
-  seeOutcome: Fun([UInt], Null),
-  informTimeout: Fun([], Null),// called when timeout occurs,llow the frontend to be informed that a timeout occurred
-};
+
 //enumerations used in winner function
 const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);//enumerations for the hands that may be played
 const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3); //enumerations the outcomes of the game
@@ -25,6 +19,14 @@ const winner = (handAlice, handBob) =>
  //loop through assertions for draw
  forall(UInt, (hand) =>
   assert(winner(hand, hand) == DRAW));
+//Player interface
+const Player = {
+  ...hasRandom,// awaits frontend to provide acess to random numbers
+  getHand: Fun([], UInt),
+  seeOutcome: Fun([UInt], Null),
+  informTimeout: Fun([], Null),// called when timeout occurs,llow the frontend to be informed that a timeout occurred
+};
+
 
 export const main = Reach.App(() => {
   //participant interact interface
