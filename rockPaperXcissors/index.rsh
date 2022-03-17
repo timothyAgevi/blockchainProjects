@@ -56,7 +56,7 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));
   Bob.publish(handBob)//bob publish his hand
     .pay(wager);
 //calculate outcome
-  const outcome = (handAlice + (4 - handBob)) % 3;
+  const outcome = winner(_handAlice, handBob)
   //determine transfer of funds
   const            [forAlice, forBob] =
     outcome == 2 ? [       2,      0] :
