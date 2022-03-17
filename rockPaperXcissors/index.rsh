@@ -13,6 +13,8 @@ const winner = (handAlice, handBob) =>
  //assertions
  assert(winner(ROCK,PAPER)==B_WINS);
  assert(winner(PAPER,ROCK,)==A_WINS);
+ assert(winner(ROCK,ROCK,)==DRAW);
+ 
 
 export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
