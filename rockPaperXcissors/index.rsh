@@ -22,7 +22,7 @@ export const main = Reach.App(() => {
   });
   //Alice publish wager and hand
   Alice.publish(wager, handAlice)
-    .pay(wager);
+    .pay(wager);//pay inbuilt function to request wager
   commit();
 
   Bob.only(() => { 

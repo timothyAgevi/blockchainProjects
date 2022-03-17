@@ -32,6 +32,7 @@ await Promise.all([
   ctcAlice.p.Alice({ //instead of backend.Alice
     ...Player('Alice'),
     wager: stdlib.parseCurrency(5),
+
   }),
   ctcBob.p.Bob({//instead of backend.Bob
     ...Player('Bob'),
