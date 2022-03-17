@@ -12,8 +12,8 @@ const winner = (handAlice, handBob) =>
   ((handAlice + (4 - handBob)) % 3);
  //assertions
  assert(winner(ROCK,PAPER)==B_WINS);
- assert(winner(PAPER,ROCK,)==A_WINS);
- assert(winner(ROCK,ROCK,)==DRAW);
+ assert(winner(PAPER,ROCK) ==A_WINS)
+ assert(winner(ROCK,ROCK)==DRAW);
 
  //loop assertions for each value entered fpr hand return valid outcome
  forall(UInt, handAlice =>
