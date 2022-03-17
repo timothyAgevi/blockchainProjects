@@ -41,9 +41,7 @@ await Promise.all([
   }),
   ctcBob.p.Bob({//instead of backend.Bob
     ...Player('Bob'),
-    acceptWager: (amt) => {
-      console.log(`Bob accepts the wager of ${fmt(amt)}.`);
-    },
+  
 
   }),
 ]);
