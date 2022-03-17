@@ -50,6 +50,7 @@ export const main = Reach.App(() => {
     const _handAlice = interact.getHand();//compute handAlice without declassifing it
     const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
     const commitAlice = declassify(_commitAlice);//declassify Alice commitment
+    const deadline = declassify(interact.deadline);//lice declassify and publish the deadline for later timeout clauses
   });
   //Alice publish wager and hand
   Alice.publish(wager, commitAlice)
