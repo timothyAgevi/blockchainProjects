@@ -17,7 +17,7 @@ const ctcBob = accBob.contract(backend, ctcAlice.getInfo());
 //interact for Player Interface
 const HAND = ['Rock', 'Paper', 'Scissors'];
 const OUTCOME = ['Bob wins', 'Draw', 'Alice wins'];
-//constructor for Playeer interface
+//constructor for Player interface
 const Player = (Who) => ({
   getHand: () => {
     const hand = Math.floor(Math.random() * 3);
