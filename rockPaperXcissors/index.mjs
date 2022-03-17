@@ -38,7 +38,7 @@ if (isAlice) {
 } else {
   const info = await ask.ask(//request info
     `Please paste the contract information:`,
-    JSON.parse
+    JSON.parse //parse info
   );
   ctc = acc.contract(backend, info);
 }
