@@ -62,7 +62,7 @@ commit();
     const handAlice = declassify(_handAlice);
   });
   Alice.publish(saltAlice, handAlice);
-  checkCommitment(commitAlice, saltAlice, handAlice);
+  checkCommitment(commitAlice, saltAlice, handAlice);// checks that the published values match the original values
 //calculate outcome
   const outcome = winner(handAlice, handBob)
   //determine transfer of funds
