@@ -41,6 +41,7 @@ await Promise.all([
   }),
   ctcBob.p.Bob({//instead of backend.Bob
     ...Player('Bob'),
+    //Lines 42 through 51 redefine Bob's acceptWager method as an asynchronous function, where half of the time it will take at least ten blocks on the Ethereum network by waiting for ten units of time to pass. We know that ten is the value of deadline, so this will cause a timeout
     acceptWager: async (amt) => { // <-- async now
       if ( Math.random() <= 0.5 ) {
         for ( let i = 0; i < 10; i++ ) {
