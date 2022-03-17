@@ -17,14 +17,15 @@ const ctcBob = accBob.contract(backend, ctcAlice.getInfo());
 //interact for Player Interface
 const HAND = ['Rock', 'Paper', 'Scissors'];
 const OUTCOME = ['Bob wins', 'Draw', 'Alice wins'];
-//constructor for Player interface
+//constructor(player interact object) for Player interface
 const Player = (Who) => ({
   ...stdlib.hasRandom,//allows each participant's Reach code to generate random numbers
-  getHand: () => {
-    const hand = Math.floor(Math.random() * 3);
-    console.log(`${Who} played ${HAND[hand]}`);
-    return hand;
-  },
+  // getHand: () => {
+  //   const hand = Math.floor(Math.random() * 3);
+  //   console.log(`${Who} played ${HAND[hand]}`);
+  //   return hand;
+  // },
+  
   seeOutcome: (outcome) => {
     console.log(`${Who} saw outcome ${OUTCOME[outcome]}`);
   },
