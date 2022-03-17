@@ -25,7 +25,18 @@ const Player = (Who) => ({
   //   console.log(`${Who} played ${HAND[hand]}`);
   //   return hand;
   // },
-  
+  getHand: async () => { // <-- async now
+    const hand = Math.floor(Math.random() * 3);
+    console.log(`${Who} played ${HAND[hand]}`);
+    if ( Math.random() <= 0.01 ) {
+      for ( let i = 0; i < 10; i++ ) {
+        console.log(`  ${Who} takes their sweet time sending it back...`);
+        await stdlib.wait(1);
+      }
+    }
+    return hand;
+  },
+
   seeOutcome: (outcome) => {
     console.log(`${Who} saw outcome ${OUTCOME[outcome]}`);
   },
