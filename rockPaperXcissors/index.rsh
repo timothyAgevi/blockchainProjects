@@ -77,7 +77,6 @@ export const main = Reach.App(() => {
 
 
 
-commit();
     //Alice can now reveal her secret
       Alice.only(() => {
         //Alice declassify secret information
