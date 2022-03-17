@@ -24,6 +24,7 @@ if (createAcc) {
     `What is your account secret?`,
     (x => x)
   );
+  //load the existing account
   acc = await stdlib.newAccountFromSecret(secret);
 }
 
