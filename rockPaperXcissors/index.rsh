@@ -64,7 +64,7 @@ commit();
   Alice.publish(saltAlice, handAlice);
   checkCommitment(commitAlice, saltAlice, handAlice);
 //calculate outcome
-  const outcome = winner(_handAlice, handBob)
+  const outcome = winner(handAlice, handBob)
   //determine transfer of funds
   const            [forAlice, forBob] =
     outcome == 2 ? [       2,      0] :
