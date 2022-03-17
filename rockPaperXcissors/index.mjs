@@ -40,7 +40,7 @@ if (isAlice) {
     `Please paste the contract information:`,
     JSON.parse //parse info
   );
-  ctc = acc.contract(backend, info);
+  ctc = acc.contract(backend, info);//process info
 }
 
 const fmt = (x) => stdlib.formatCurrency(x, 4);
