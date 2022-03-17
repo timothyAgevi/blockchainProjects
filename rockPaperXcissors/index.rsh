@@ -30,7 +30,7 @@ export const main = Reach.App(() => {
   //participant interact interface
   const Alice = Participant('Alice', {
     ...Player,
-    wager: UInt,
+    wager: UInt,//atomic units of currency
     deadline: UInt, // time delta (blocks/rounds):value to use as a standard deadline throughout the program
   });
   const Bob   = Participant('Bob', {
