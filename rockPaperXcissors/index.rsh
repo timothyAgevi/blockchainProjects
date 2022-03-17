@@ -35,7 +35,7 @@ export const main = Reach.App(() => {
   });
   //informTimeout helper function 
   const informTimeout=()=>{ //defines the function as an arrow expression
-    each([Alice,Bob],()=>{
+    each([Alice,Bob],()=>{ //each of the participants perform a local step
       interact.informTimeout();
     });
   };
