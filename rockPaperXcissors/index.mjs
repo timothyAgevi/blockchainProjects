@@ -31,11 +31,12 @@ if (createAcc) {
 let ctc = null;
 //branch based on which player is running
 if (isAlice) {
+  //deploy and print public info
   ctc = acc.contract(backend);
   ctc.getInfo().then((info) => {
     console.log(`The contract is deployed as = ${JSON.stringify(info)}`); });
 } else {
-  const info = await ask.ask(
+  const info = await ask.ask(//request info
     `Please paste the contract information:`,
     JSON.parse
   );
