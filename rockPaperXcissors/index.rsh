@@ -51,7 +51,7 @@ export const main = Reach.App(() => {
     const _handAlice = interact.getHand();//compute handAlice without declassifing it
     const [_commitAlice,_saltAlice]=makeCommitment(interact,_handAlice);//compute a commitment to the handAlice
     const commitAlice = declassify(_commitAlice);//declassify Alice commitment
-    const deadline = declassify(interact.deadline);//lice declassify and publish the deadline for later timeout clauses
+    const deadline = declassify(interact.deadline);//Alice declassify and publish the deadline for later timeout clauses
   });
   //Alice publish wager,hand,deadline
   Alice.publish(wager, commitAlice,deadline)
@@ -65,8 +65,9 @@ unknowable(Bob, Alice(_handAlice, _saltAlice));//states the knowledge assertion.
   });
   Bob.publish(handBob)//bob publish his hand
     .pay(wager)
-    .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
-
+    //timeout handler
+    .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));//if bob does Not complete action within timedelta ddeadline,app transitions to step gvn by arrow function
+        //i.e closeTo:reach std lib function that allows anyone to send a message and transfer all of the funds in the contract to Alice
 commit();
     //Alice can now reveal her secret
       Alice.only(() => {
