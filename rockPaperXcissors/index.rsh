@@ -65,7 +65,7 @@ export const main = Reach.App(() => {
     interact.acceptWager(wager);//interact with acceptWager
     
   });
-  Bob.publish(handBob)//bob publish his hand
+  Bob.publish(wager)//bob publish his hand
     .pay(wager)
     //timeout handler
     .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));//if bob does Not complete action within timedelta ddeadline,app transitions to step gvn by arrow function
