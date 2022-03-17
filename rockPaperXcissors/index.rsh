@@ -26,6 +26,7 @@ const winner = (handAlice, handBob) =>
   assert(winner(hand, hand) == DRAW));
 
 export const main = Reach.App(() => {
+  //participant interact interface
   const Alice = Participant('Alice', {
     ...Player,
     wager: UInt,
