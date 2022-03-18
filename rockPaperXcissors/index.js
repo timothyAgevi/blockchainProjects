@@ -35,11 +35,11 @@ class App extends React.Component{
       }
       //set the component state to display Choose Role when skip button is pressed
       async skipFundAccount() { this.setState({view: 'DeployerOrAttacher'}); }
-      selectAttacher() { this.setState({view: 'Wrapper', ContentView: Attacher}); }
+      selectAttacher() { this.setState({view: 'Wrapper', ContentView: Attacher}); }//sub component if user clicks Attacher
       selectDeployer() { this.setState({view: 'Wrapper', ContentView: Deployer}); }
       render() { return renderView(this, AppViews); }//render the appropriate view from views/AppViews.js.
     }
-    
+
 
 
 
