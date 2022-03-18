@@ -42,6 +42,7 @@ class App extends React.Component{
          //add Player constructor/component
          class Player extends React.Component {
             random() { return reach.hasRandom.random(); }//add random callback
+            //lines 46thru 51, we provide the getHand callback
             async getHand() { // Fun([], UInt)
               const hand = await new Promise(resolveHandP => {
                 this.setState({view: 'GetHand', playable: true, resolveHandP});
