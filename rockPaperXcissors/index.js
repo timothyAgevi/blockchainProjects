@@ -30,7 +30,7 @@ class App extends React.Component{
         }
     }//calback when user clicks Fund Account button
     async fundAccount(fundAmount) {
-        await reach.fundFromFaucet(this.state.acc, reach.parseCurrency(fundAmount));
+        await reach.fundFromFaucet(this.state.acc, reach.parseCurrency(fundAmount));// transfer funds from the faucet to the user's account
         this.setState({view: 'DeployerOrAttacher'});
       }
       async skipFundAccount() { this.setState({view: 'DeployerOrAttacher'}); }
