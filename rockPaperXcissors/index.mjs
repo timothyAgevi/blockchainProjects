@@ -106,3 +106,5 @@ const after = await getBalance();
 console.log(`Your balance is now ${after}`);
 
 ask.done();
+
+//REACH_CONNECTOR_MODE=ALGO-devnet ./reach run 
