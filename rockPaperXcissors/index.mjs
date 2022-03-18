@@ -42,7 +42,7 @@ if (isAlice) {
   );
   ctc = acc.contract(backend, info);//process info
 }
-
+//ac balances
 const fmt = (x) => stdlib.formatCurrency(x, 4);
 const getBalance = async () => fmt(await stdlib.balanceOf(acc));
 
