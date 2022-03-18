@@ -1,0 +1,1 @@
+//dialog used to get a hand from the player

@@ -44,15 +44,16 @@ class App extends React.Component{
             random() { return reach.hasRandom.random(); }//add random callback
             //lines 46thru 51, we provide the getHand callback
             async getHand() { // Fun([], UInt)
+                // line 47 -50 set the component state to display Get Hand dialog, and wait for a Promise which can be resolved via user interaction.
               const hand = await new Promise(resolveHandP => {
                 this.setState({view: 'GetHand', playable: true, resolveHandP});
               });
-              this.setState({view: 'WaitingForResults', hand});
+              this.setState({view: 'WaitingForResults', hand});//after promise is reslolved ,set the component state to display Waiting for results display.
               return handToInt[hand];
             }
-            seeOutcome(i) { this.setState({view: 'Done', outcome: intToOutcome[i]}); }
-            informTimeout() { this.setState({view: 'Timeout'}); }
-            playHand(hand) { this.state.resolveHandP(hand); }
+            seeOutcome(i) { this.setState({view: 'Done', outcome: intToOutcome[i]}); }//seeOutcome callback
+            informTimeout() { this.setState({view: 'Timeout'}); }//informTimeout callback
+            playHand(hand) { this.state.resolveHandP(hand); }//promise from line 47 is resolved,define wjhat happenswhen user clicks R,P,s
           }
 
 
