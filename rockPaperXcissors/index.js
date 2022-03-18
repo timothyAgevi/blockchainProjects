@@ -29,6 +29,11 @@ class App extends React.Component{
             this.setState({view:'DeployerOrAttacher'});//set the component state to skip to Choose Role.
         }
     }
+    async fundAccount(fundAmount) {
+        await reach.fundFromFaucet(this.state.acc, reach.parseCurrency(fundAmount));
+        this.setState({view: 'DeployerOrAttacher'});
+      }
+
 }
 
 
