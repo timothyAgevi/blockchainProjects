@@ -32,13 +32,14 @@ class App extends React.Component{
     async fundAccount(fundAmount) {
         await reach.fundFromFaucet(this.state.acc, reach.parseCurrency(fundAmount));// transfer funds from the faucet to the user's account
         this.setState({view: 'DeployerOrAttacher'});// set the component state to display Choose Role
-      }//set the component state to display Choose Role when skip button is pressed
+      }
+      //set the component state to display Choose Role when skip button is pressed
       async skipFundAccount() { this.setState({view: 'DeployerOrAttacher'}); }
       selectAttacher() { this.setState({view: 'Wrapper', ContentView: Attacher}); }
       selectDeployer() { this.setState({view: 'Wrapper', ContentView: Deployer}); }
       render() { return renderView(this, AppViews); }//render the appropriate view from views/AppViews.js.
-
     }
+    
 
 
 
