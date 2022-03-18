@@ -19,11 +19,11 @@ class App extends React.Component{
         super (props);this.state={view:'ConnectAccount',...defaults};// initialize the component state to display Connect Account dialog
     }//hook into React's componentDidMount lifecycle event
     async componentDidMount(){
-        const acc= await reach.getDefaultAccount();
+        const acc= await reach.getDefaultAccount();//accesses the default browser account.
         const balAtomic=await reach.balanceOf(acc);
         const bal=reach.formatCurrency(balAtomic,4);
         this .setState({acc,bal});
-        if(await reach.canFundFromFaucet()){
+        if(await reach.canFundFromFaucet()){//ee if we can access the Reach developer testing network faucet
             this.setState({view:'FundAccount'});
         }else{
             this.setState({view:'DeployerOrAttacher'});
