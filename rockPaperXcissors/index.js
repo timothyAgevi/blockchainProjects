@@ -16,7 +16,7 @@ const defaults = {defaultFundAmt: '10', defaultWager: '3', standardUnit};
 //define app component on mount
 class App extends React.Component{
     constructor(props){
-        super (props);this.state={view:'ConnectAccount',...defaults};
+        super (props);this.state={view:'ConnectAccount',...defaults};// initialize the component state to display Connect Account dialog
     }
     async componentDidMount(){
         const acc= await reach.getDefaultAccount();
