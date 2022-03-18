@@ -52,7 +52,7 @@ exports.FundAccount = class extends React.Component {
     );
   }
 }
-
+//dialog used to get hand from player
 exports.DeployerOrAttacher = class extends React.Component {
   render() {
     const {parent} = this.props;
