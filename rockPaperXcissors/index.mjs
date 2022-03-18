@@ -65,3 +65,4 @@ const afterBob = await getBalance(accBob);
 //print balance before and after transaction
 console.log(`Alice went from ${beforeAlice} to ${afterAlice}.`);
 console.log(`Bob went from ${beforeBob} to ${afterBob}.`);
+//cli for single user
