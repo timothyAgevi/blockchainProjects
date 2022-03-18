@@ -32,7 +32,7 @@ exports.GetHand = class extends React.Component {
     );
   }
 }
-
+//Waiting for results display
 exports.WaitingForResults = class extends React.Component {
   render() {
     return (
@@ -54,7 +54,7 @@ exports.Done = class extends React.Component {
     );
   }
 }
-
+//Timeout display
 exports.Timeout = class extends React.Component {
   render() {
     return (
