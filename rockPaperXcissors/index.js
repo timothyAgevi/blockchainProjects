@@ -23,10 +23,10 @@ class App extends React.Component{
         const balAtomic=await reach.balanceOf(acc);
         const bal=reach.formatCurrency(balAtomic,4);
         this .setState({acc,bal});
-        if(await reach.canFundFromFaucet()){//ee if we can access the Reach developer testing network faucet
-            this.setState({view:'FundAccount'});
+        if(await reach.canFundFromFaucet()){//see if we can access the Reach developer testing network faucet
+            this.setState({view:'FundAccount'});//set the component state to display Fund Account dialog
         }else{
-            this.setState({view:'DeployerOrAttacher'});
+            this.setState({view:'DeployerOrAttacher'});//set the component state to skip to Choose Role.
         }
     }
 }
