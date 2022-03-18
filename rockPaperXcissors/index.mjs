@@ -55,7 +55,7 @@ interact.informTimeout = () => {
   console.log(`There was a timeout.`);
   process.exit(1);
 };
-
+//program begins with wager
 if (isAlice) {
   const amt = await ask.ask(
     `How much do you want to wager?`,
