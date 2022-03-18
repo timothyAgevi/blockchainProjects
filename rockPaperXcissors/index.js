@@ -17,7 +17,7 @@ const defaults = {defaultFundAmt: '10', defaultWager: '3', standardUnit};
 class App extends React.Component{
     constructor(props){
         super (props);this.state={view:'ConnectAccount',...defaults};// initialize the component state to display Connect Account dialog
-    }
+    }//hook into React's componentDidMount lifecycle event
     async componentDidMount(){
         const acc= await reach.getDefaultAccount();
         const balAtomic=await reach.balanceOf(acc);
@@ -28,7 +28,6 @@ class App extends React.Component{
         }else{
             this.setState({view:'DeployerOrAttacher'});
         }
-
     }
 }
 
