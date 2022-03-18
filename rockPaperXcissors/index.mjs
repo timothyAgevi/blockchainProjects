@@ -50,7 +50,7 @@ const before = await getBalance();
 console.log(`Your balance is ${before}`);
 //interact 
 const interact = { ...stdlib.hasRandom };
-
+//add informTimeout to interact
 interact.informTimeout = () => {
   console.log(`There was a timeout.`);
   process.exit(1);
