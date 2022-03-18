@@ -48,7 +48,7 @@ const getBalance = async () => fmt(await stdlib.balanceOf(acc));
 //account balance before transaction
 const before = await getBalance();
 console.log(`Your balance is ${before}`);
-
+//interact 
 const interact = { ...stdlib.hasRandom };
 
 interact.informTimeout = () => {
