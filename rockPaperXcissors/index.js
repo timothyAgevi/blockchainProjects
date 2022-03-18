@@ -53,8 +53,25 @@ class App extends React.Component{
             }
             seeOutcome(i) { this.setState({view: 'Done', outcome: intToOutcome[i]}); }//seeOutcome callback
             informTimeout() { this.setState({view: 'Timeout'}); }//informTimeout callback
-            playHand(hand) { this.state.resolveHandP(hand); }//promise from line 47 is resolved,define wjhat happenswhen user clicks R,P,s
-          }
+            playHand(hand) { this.state.resolveHandP(hand); }//promise from line 47 is resolved,define wjhat happenswhen user clicks R,P,s      
+             }
+        class Deployer extends Player {
+            constructor(props) {
+              super(props);
+              this.state = {view: 'SetWager'};
+            }
+            setWager(wager) { this.setState({view: 'Deploy', wager}); }
+            async deploy() {
+              const ctc = this.props.acc.contract(backend);
+              this.setState({view: 'Deploying', ctc});
+              this.wager = reach.parseCurrency(this.state.wager); // UInt
+              this.deadline = {ETH: 10, ALGO: 100, CFX: 1000}[reach.connector]; // UInt
+              backend.Alice(ctc, this);
+              const ctcInfoStr = JSON.stringify(await ctc.getInfo(), null, 2);
+              this.setState({view: 'WaitingForAttacher', ctcInfoStr});
+            }
+            render() { return renderView(this, DeployerViews); }
+          }  
 
 
 
