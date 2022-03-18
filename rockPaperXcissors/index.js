@@ -63,7 +63,7 @@ class App extends React.Component{
             setWager(wager) { this.setState({view: 'Deploy', wager}); }//set component state to display set wager dialog
             async deploy() {
               const ctc = this.props.acc.contract(backend);
-              this.setState({view: 'Deploying', ctc});
+              this.setState({view: 'Deploying', ctc});//when user clicks set wager,display Deploy dialog
               this.wager = reach.parseCurrency(this.state.wager); // UInt
               this.deadline = {ETH: 10, ALGO: 100, CFX: 1000}[reach.connector]; // UInt
               backend.Alice(ctc, this);
