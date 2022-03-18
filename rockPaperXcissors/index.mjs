@@ -45,7 +45,7 @@ if (isAlice) {
 //ac balances
 const fmt = (x) => stdlib.formatCurrency(x, 4);
 const getBalance = async () => fmt(await stdlib.balanceOf(acc));
-
+//account balance before transaction
 const before = await getBalance();
 console.log(`Your balance is ${before}`);
 
