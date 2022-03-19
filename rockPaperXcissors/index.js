@@ -5,6 +5,7 @@ import AttacherViews from './views/AttacherViews';
 import {renderDOM, renderView} from './views/render';
 import './index.css';
 import * as backend from './build/index.main.mjs';
+import * as reach from '@reach-sh/stdlib/ALGO';
 //std library
 import {loadStdlib} from '@reach-sh/stdlib';
 const reach = loadStdlib(process.env);//process.env. are variables used to acess desired stdlib 
