@@ -58,7 +58,7 @@ export const main = Reach.App(() => {
     .pay(wager);//pay inbuilt function to request wager
   commit();
 // salt in the commitment, so that multiple commitments to the same value are not identical.
-// unknowable(Bob, Alice(_handAlice, _saltAlice));//states the knowledge assertion.
+
   Bob.only(() => { 
     interact.acceptWager(wager);//interact with acceptWager
     
@@ -83,7 +83,7 @@ export const main = Reach.App(() => {
   .timeout(relativeTime(deadline), () => closeTo(Bob, informTimeout));
   commit()
    //knowledge assertation
-  unknowable(Bob,Alice(_handAlice, _saltAlice));
+  unknowable(Bob,Alice(_handAlice, _saltAlice));//states the knowledge assertion.
     Bob.only(() => {
       const handBob = declassify(interact.getHand());
     });
@@ -92,12 +92,12 @@ export const main = Reach.App(() => {
     commit();
 
     Alice.only(() => {
-      const saltAlice = declassify(_saltAlice);
+      const saltAlice = declassify(_saltAlice);//new secret even for ame hand outpit
       const handAlice = declassify(_handAlice);
     });
     Alice.publish(saltAlice, handAlice)
       .timeout(relativeTime(deadline), () => closeTo(Bob, informTimeout));
-    checkCommitment(commitAlice, saltAlice, handAlice);
+    checkCommitment(commitAlice, saltAlice, handAlice);//confitm if values same                                           
 
     outcome = winner(handAlice, handBob);
     continue;
