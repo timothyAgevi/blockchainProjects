@@ -8,6 +8,7 @@ import * as backend from './build/index.main.mjs';
 import * as reach from '@reach-sh/stdlib/ALGO';
 //std library
 import {loadStdlib} from '@reach-sh/stdlib';
+//error below
 const reach = loadStdlib(process.env);//process.env. are variables used to acess desired stdlib 
 //helper functions and defaults
 const handToInt = {'ROCK': 0, 'PAPER': 1, 'SCISSORS': 2};
