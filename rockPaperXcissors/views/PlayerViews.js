@@ -42,7 +42,7 @@ exports.WaitingForResults = class extends React.Component {
     );
   }
 }
-//display when the player sees the end of the game 
+//display when the player sees the end of the game ,done display
 exports.Done = class extends React.Component {
   render() {
     const {outcome} = this.props;
