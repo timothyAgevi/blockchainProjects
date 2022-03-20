@@ -18,13 +18,14 @@ const defaults = {defaultFundAmt: '10', defaultWager: '3', standardUnit};
 //define app component on mount
 class App extends React.Component{
     constructor(props){
-        super (props);this.state={view:'ConnectAccount',...defaults};// initialize the component state to display Connect Account dialog
+        super (props);
+        this.state={view:'ConnectAccount',...defaults};// initialize the component state to display Connect Account dialog
     }//hook into React's componentDidMount lifecycle event
     async componentDidMount(){
         const acc= await reach.getDefaultAccount();//accesses the default browser account.
         const balAtomic=await reach.balanceOf(acc);
         const bal=reach.formatCurrency(balAtomic,4);
-        this .setState({acc,bal});
+        this.setState({acc,bal});
         if(await reach.canFundFromFaucet()){//see if we can access the Reach developer testing network faucet
             this.setState({view:'FundAccount'});//set the component state to display Fund Account dialog
         }else{
