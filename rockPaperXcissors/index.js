@@ -82,7 +82,7 @@ class App extends React.Component{
             }//callback when user clicks Attach button
             attach(ctcInfoStr) {
               const ctc = this.props.acc.contract(backend, JSON.parse(ctcInfoStr));
-              this.setState({view: 'Attaching'});
+              this.setState({view: 'Attaching'});//set the component state to display Attaching display
               backend.Bob(ctc, this);
             }
             async acceptWager(wagerAtomic) { // Fun([UInt], Null)

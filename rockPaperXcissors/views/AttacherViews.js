@@ -37,7 +37,7 @@ exports.Attach = class extends React.Component {
     );
   }
 }
-
+//attaching display
 exports.Attaching = class extends React.Component {
   render() {
     return (
