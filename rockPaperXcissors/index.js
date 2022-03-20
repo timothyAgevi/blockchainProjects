@@ -83,7 +83,7 @@ class App extends React.Component{
             attach(ctcInfoStr) {
               const ctc = this.props.acc.contract(backend, JSON.parse(ctcInfoStr));
               this.setState({view: 'Attaching'});//set the component state to display Attaching display
-              backend.Bob(ctc, this);
+              backend.Bob(ctc, this);//run reach program as bob
             }
             async acceptWager(wagerAtomic) { // Fun([UInt], Null)
               const wager = reach.formatCurrency(wagerAtomic, 4);
