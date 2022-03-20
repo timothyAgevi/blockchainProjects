@@ -78,7 +78,7 @@ class App extends React.Component{
           class Attacher extends Player {
             constructor(props) {
               super(props);
-              this.state = {view: 'Attach'};
+              this.state = {view: 'Attach'};//initialize component state to display Attach dialog
             }
             attach(ctcInfoStr) {
               const ctc = this.props.acc.contract(backend, JSON.parse(ctcInfoStr));
