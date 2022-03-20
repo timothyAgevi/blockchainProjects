@@ -4,7 +4,7 @@ import PlayerViews from './PlayerViews';
 const exports = {...PlayerViews};
 
 const sleep = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
-
+//wrapper
 exports.Wrapper = class extends React.Component {
   render() {
     const {content} = this.props;
@@ -16,7 +16,7 @@ exports.Wrapper = class extends React.Component {
     );
   }
 }
-
+//setWager dialog
 exports.SetWager = class extends React.Component {
   render() {
     const {parent, defaultWager, standardUnit} = this.props;
@@ -61,7 +61,7 @@ exports.Deploying = class extends React.Component {
 }
 
 exports.WaitingForAttacher = class extends React.Component {
-  async copyToClipborad(button) {
+  async copyToClipborad(button) {//code for cpying to clipboard
     const {ctcInfoStr} = this.props;
     navigator.clipboard.writeText(ctcInfoStr);
     const origInnerHTML = button.innerHTML;
