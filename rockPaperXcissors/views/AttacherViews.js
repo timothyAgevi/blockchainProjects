@@ -14,7 +14,7 @@ exports.Wrapper = class extends React.Component {
     );
   }
 }
-
+//Attacher dialog
 exports.Attach = class extends React.Component {
   render() {
     const {parent} = this.props;
