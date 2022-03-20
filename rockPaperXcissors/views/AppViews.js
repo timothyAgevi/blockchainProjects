@@ -26,7 +26,7 @@ exports.ConnectAccount = class extends React.Component {
     )
   }
 }
-
+//fund Account dialog
 exports.FundAccount = class extends React.Component {
   render() {
     const {bal, standardUnit, defaultFundAmt, parent} = this.props;
