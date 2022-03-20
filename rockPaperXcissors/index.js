@@ -92,7 +92,7 @@ class App extends React.Component{
               });
             }
             termsAccepted() {
-              this.state.resolveAcceptedP();
+              this.state.resolveAcceptedP();//promise on line 90 resolved
               this.setState({view: 'WaitingForTurn'});
             }
             render() { return renderView(this, AttacherViews); }

@@ -47,7 +47,7 @@ exports.Attaching = class extends React.Component {
     );
   }
 }
-
+//accept terms dialog
 exports.AcceptTerms = class extends React.Component {
   render() {
     const {wager, standardUnit, parent} = this.props;
@@ -68,7 +68,7 @@ exports.AcceptTerms = class extends React.Component {
     );
   }
 }
-
+//waitinmng for turn dialog
 exports.WaitingForTurn = class extends React.Component {
   render() {
     return (
