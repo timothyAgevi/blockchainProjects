@@ -79,7 +79,7 @@ class App extends React.Component{
             constructor(props) {
               super(props);
               this.state = {view: 'Attach'};//initialize component state to display Attach dialog
-            }
+            }//callback when user clicks Attach button
             attach(ctcInfoStr) {
               const ctc = this.props.acc.contract(backend, JSON.parse(ctcInfoStr));
               this.setState({view: 'Attaching'});
